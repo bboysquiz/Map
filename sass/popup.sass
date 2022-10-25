@@ -1,0 +1,79 @@
+.popup
+ &__capture
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 19vw
+  height: 10vh
+  top: 12vh
+  left: 40vw
+  z-index: 9999999!important
+  background: url('../img/popup/capture-bg.png') center no-repeat 
+  background-size: contain 
+  pointer-events: none
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 60px 40px -7px
+  animation: 0.2s linear appearPopup
+ &__text
+  font-size: 22px
+  color: #fff
+  font-family: RobotoCondensed-Light
+  text-transform: uppercase
+  font-weight: 900
+  text-align: center
+ &__video
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 60vw
+  height: 40vh
+  top: 30vh
+  left: 20vw
+  z-index: 99999999999999999999!important
+  animation: 0.2s linear appearPopup
+  & iframe
+   z-index: 99999999999999999999!important
+ &__overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background-color: #000
+  opacity: .4
+  z-index: 999999999999999!important
+  display: none
+.loading
+ animation: loadingAnimation 2s linear infinite
+ z-index: 999999!important
+ position: absolute
+ top: 50%
+ left: 50%
+ margin: -25px 0 0 -25px
+ width: 50px
+ height: 50px
+.circle-path
+ stroke: hsl(210, 70, 75)
+ stroke-linecap: round
+ animation: dash 1.5s ease-in-out infinite
+ z-index: 999999!important
+
+@keyframes loadingAnimation
+ 100%
+  transform: rotate(360deg)
+@keyframes dash
+ 0%
+  stroke-dasharray: 1, 150
+  stroke-dashoffset: 0
+ 50%
+  stroke-dasharray: 90, 150
+  stroke-dashoffset: -35
+ 100% 
+  stroke-dasharray: 90, 150
+  stroke-dashoffset: -124
+@keyframes appearPopup
+ 0%
+  opacity: 0
+ 100%
+  opacity: 1

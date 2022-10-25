@@ -1,0 +1,72 @@
+.language
+ position: fixed
+ top: 35vh
+ left: 35vw
+ width: 30vw
+ height: 30vh
+ display: flex
+ justify-content: center
+ z-index: 9999999999999999999999!important
+ background-color: rgb(11, 9, 22, .3)
+ opacity: 1
+ animation: 2s linear appearLang
+ &__border
+  position: fixed
+  top: 35vh
+  left: 35vw
+  width: 30vw
+  height: 30vh
+  z-index: 9999999999999999999!important
+  animation: 2s linear appearLang
+ &__overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background-color: #000
+  opacity: .4
+  z-index: 999999999999999999999!important
+ &__container
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+  align-items: center
+  width: 28vw
+  height: 28vh
+  z-index: 9999999999999999999999!important
+  animation: .5s linear appearLang
+ &__block
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  width: 9.3vw
+  z-index: 9999999999999999999999!important
+  cursor: pointer
+  &:hover
+   background-color: #80A6FF
+   transition: 0.5s
+  &:active
+   transform: translateY(15px)
+   transition: .2s
+ &__img
+  width: 50px
+  height: 37.5px
+  z-index: 9999999999999999999999!important
+ &__title
+  width: 100%
+  text-align: center
+  font-family: RobotoCondensed-Light
+  font-size: 20px
+  color: #fff
+  font-weight: 700
+  z-index: 9999999999999999999999!important
+  text-transform: uppercase
+  position: relative
+  animation: 2s linear appearLang
+
+@keyframes appearLang
+ 0%
+  opacity: 0
+ 100%
+  opacity: 1

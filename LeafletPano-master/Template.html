@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>//image//</title>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />  
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <style>
+        body
+        {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map
+        {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+	<div id="map" style="background-color://bgColor//;"/>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script>
+      var image = '//image//';
+      var width = //width//;
+      var height = //height//;
+      var maxLevel = //maxLevel//;
+      var minLevel = //minLevel//;
+      var orgLevel = //orgLevel//;
+
+      // Some weird calculations to fit the image to the initial position
+      // Leaflet has some bugs there. The fitBounds method is not correct for large scale bounds
+      var tileWidth = 256 * Math.pow(2, orgLevel);
+      var radius = tileWidth / 2 / Math.PI;
+      var rx = width - tileWidth / 2;
+      var ry = -height + tileWidth / 2;
+
+      var west = -180;
+      var east = (180 / Math.PI) * (rx / radius);
+      var north = 85.05;
+      var south = (360 / Math.PI) * (Math.atan(Math.exp(ry / radius)) - (Math.PI / 4));
+      var rc = (tileWidth / 2 + ry) / 2;
+      var centerLat = (360 / Math.PI) * (Math.atan(Math.exp(rc / radius)) - (Math.PI / 4));
+      var centerLon = (west + east) / 2;
+      var bounds = [[south, west], [north, east]];
+
+      var map = new L.Map('map', {maxBounds: bounds});
+
+      L.tileLayer(image + '/{z}-{x}-{y}.jpg', {
+        maxZoom: maxLevel, minZoom: minLevel, opacity: 1.0, zIndex: 1, noWrap: true,
+        bounds: bounds,
+        attribution: '<a href="https://github.com/oliverheilig/LeafletPano">LeafletPano</a>'
+		  }).addTo(map);
+		  
+      var zoom = map.getBoundsZoom(bounds);
+      var center = new L.latLng(centerLat, centerLon);
+  
+  		map.setView(center, zoom);
+	</script>
+</body>
+</html>
